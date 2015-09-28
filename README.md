@@ -1,8 +1,9 @@
 # Searchable UC Davis Map with Navigation
+I made this iOS application over this weekend as part of my application for the iOS Developer job position at Creative Media.
 
 ## Synopsis
 
-This is an interactive map of UC Davis that includes real-time search and navigation.
+Interactive map of UC Davis that includes real-time search and navigation.
 - Search results appear on map as user types. (Search button zooms and pans map to focus on results)
 - Marker Callout redirects user to Maps Navigation.  
 
