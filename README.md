@@ -2,7 +2,10 @@
 
 ## Synopsis
 
-![Demo](http://giant.gfycat.com/LateGranularFossa.gif)At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+This is an interactive map of UC Davis. It includes real-time search and navigation.
+- Search results appear on map as user types. (Search button zooms and pans map to focus on results)
+- Marker Callout redirects user to Maps Navigation.
+![Demo](http://giant.gfycat.com/LateGranularFossa.gif)
 
 ## Code Example
 
