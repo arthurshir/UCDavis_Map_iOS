@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A5X-aN-js1" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="60" width="600" height="539"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5X-aN-js1" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="60" width="600" height="585"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-V1-8w5">
@@ -63,7 +63,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ceB-SV-loO">
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ceB-SV-loO">
                                 <rect key="frame" x="0.0" y="60" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0GK-uw-e5A"/>
@@ -82,7 +82,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="A5X-aN-js1" secondAttribute="trailing" constant="-16" id="WJt-d6-cc7"/>
                             <constraint firstItem="A5X-aN-js1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="qcA-uM-yQ0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ceB-SV-loO" secondAttribute="trailing" constant="-16" id="vig-FJ-WfN"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="A5X-aN-js1" secondAttribute="bottom" id="vkA-cy-FSS"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="A5X-aN-js1" secondAttribute="bottom" constant="-45" id="vkA-cy-FSS"/>
                         </constraints>
                     </view>
                     <connections>

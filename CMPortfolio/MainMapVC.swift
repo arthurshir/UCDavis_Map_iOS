@@ -19,9 +19,10 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
         super.viewDidLoad()
         setupMap()
         setupSearch()
-        var iv = UIImageView(frame: CGRectMake(0, 0, 22, 22))
+        CLLocationManager().startUpdatingLocation()
+        var iv = UIImageView(frame: CGRectMake(0, 0, 20, 20))
         iv.image = UIImage(named: "Search")
-        iv.center = CGPointMake(searchButton.frame.width/2, searchButton.frame.height/2)
+        iv.center = CGPointMake(searchButton.frame.width/2 + 12, searchButton.frame.height/2)
         searchButton.addSubview(iv)
         //navigationController?.navigationBar.status
     }
@@ -83,19 +84,41 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
         }
     }
     
-    func setVisibleOnMap() {
+    func setVisibleOnMap(withMove: Bool) {
         mapView.clear()
-        var bounds = GMSCoordinateBounds()
-        for (var i = 0; i < visibleBuildings.count; i++) {
-            var bo = visibleBuildings[i] as! BuildingObject
-            var marker = LabelMarker.markerWithText(bo.name!)
-            marker.position = bo.coords!
-            marker.map = mapView
-            marker.building = bo
-            bounds.includingCoordinate(bo.coords!)
+        if (visibleBuildings.count > 0 ) {
+            var b1 = visibleBuildings.first as! BuildingObject
+            var maxLat = b1.coords!.latitude
+            var maxLon = b1.coords!.longitude
+            var minLat = b1.coords!.latitude
+            var minLon = b1.coords!.longitude
+            for (var i = 0; i < visibleBuildings.count; i++) {
+                var bo = visibleBuildings[i] as! BuildingObject
+                var marker = LabelMarker.markerWithText(bo.name!)
+                marker.position = bo.coords!
+                marker.map = mapView
+                marker.building = bo
+                
+                if (marker.position.longitude > maxLon) {
+                    maxLon = marker.position.longitude
+                }
+                if (marker.position.latitude > maxLat) {
+                    maxLat = marker.position.latitude
+                }
+                if (marker.position.longitude < minLon) {
+                    minLon = marker.position.longitude
+                }
+                if (marker.position.latitude < minLat) {
+                    minLat = marker.position.latitude
+                }
+            
+            }
+            
+            if withMove == true {
+                var bounds = GMSCoordinateBounds(coordinate: CLLocationCoordinate2DMake(maxLat, minLon), coordinate: CLLocationCoordinate2DMake(minLat, maxLon))
+                mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 100 ))
+            }
         }
-        
-        mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 30 ))
         
     }
     
@@ -108,14 +131,14 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
             searchBar.text = savedSearch
             searchBar.becomeFirstResponder()
             filterContentForText(searchBar.text)
-            setVisibleOnMap()
+            setVisibleOnMap(false)
         } else {
             // SearchBar Disabled
             searchBar.resignFirstResponder()
             savedSearch = searchBar.text
             searchBar.text = ""
             filterContentForText("")
-            setVisibleOnMap()
+            setVisibleOnMap(false)
         }
     }
     
@@ -124,11 +147,21 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
         searchBar.resignFirstResponder()
         savedSearch = searchBar.text
         searchBar.hidden = true
+        setVisibleOnMap(true)
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filterContentForText(searchText)
-        setVisibleOnMap()
+        setVisibleOnMap(false)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        savedSearch = ""
+        searchBar.text = ""
+        filterContentForText("")
+        setVisibleOnMap(false)
+        searchBar.hidden = true
     }
     
     func filterContentForText(searchText: String) {
@@ -147,20 +180,38 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     }
     
     func setupMap() {
-        var camera = GMSCameraPosition.cameraWithLatitude(38.5382322, longitude: -121.756, zoom: 14)
+        var camera = GMSCameraPosition.cameraWithLatitude(38.5382322, longitude: -121.756, zoom: 15)
         mapView.camera = camera
-        mapView.setMinZoom(13.5, maxZoom: 17)
+        mapView.setMinZoom(14.2, maxZoom: 17)
         mapView.delegate = self
         searchBar.delegate = self
+        mapView.myLocationEnabled = true
+        //mapView.settings.myLocationButton = true
         
     }
     
      // ---------- Delegate ---------- //
  
-    /*
+    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        searchBar.resignFirstResponder()
+        savedSearch = searchBar.text
+        searchBar.hidden = true
+    }
+
+    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+        var building = buildingToSend!
+        let destination = building.coords!
+        var header = building.name!
+        let addressDict = [ kABPersonAddressStreetKey as NSString: header ]
+        var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
+        var options =  [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
+        MKMapItem.openMapsWithItems([ MKMapItem.mapItemForCurrentLocation() ,MKMapItem(placemark: place)], launchOptions: options)
+        
+    }
+    
     func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
-        <#code#>
-    }*/
+        return UIImageView(image: UIImage(named: "Direction"))
+    }
     
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         buildingToSend = (marker as! BuildingMarker).building

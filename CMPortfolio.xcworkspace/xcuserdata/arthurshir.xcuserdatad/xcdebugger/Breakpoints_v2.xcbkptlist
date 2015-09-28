@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMPortfolio/MainMapVC.swift"
-            timestampString = "465118742.927614"
+            timestampString = "465125222.85605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMPortfolio/MainMapVC.swift"
-            timestampString = "465118742.927614"
+            timestampString = "465125222.85605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "setVisibleOnMap()"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "setVisibleOnMap(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CMPortfolio/MainMapVC.swift"
-            timestampString = "465118742.927614"
+            timestampString = "465125222.85605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "setVisibleOnMap()"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "setVisibleOnMap(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
