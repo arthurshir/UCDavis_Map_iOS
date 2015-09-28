@@ -19,6 +19,11 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
         super.viewDidLoad()
         setupMap()
         setupSearch()
+        var iv = UIImageView(frame: CGRectMake(0, 0, 22, 22))
+        iv.image = UIImage(named: "Search")
+        iv.center = CGPointMake(searchButton.frame.width/2, searchButton.frame.height/2)
+        searchButton.addSubview(iv)
+        //navigationController?.navigationBar.status
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -27,6 +32,7 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     }
     
     // ---------- Variables ---------- //
+    @IBOutlet var searchButton: UIButton!
     @IBOutlet var searchBar: UISearchBar!
     var buildingsToHide = [AnyObject]()
     var visibleBuildings = [AnyObject]()
@@ -143,32 +149,24 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     func setupMap() {
         var camera = GMSCameraPosition.cameraWithLatitude(38.5382322, longitude: -121.756, zoom: 14)
         mapView.camera = camera
-        mapView.setMinZoom(13.5, maxZoom: 50)
+        mapView.setMinZoom(13.5, maxZoom: 17)
         mapView.delegate = self
         searchBar.delegate = self
         
     }
     
      // ---------- Delegate ---------- //
+ 
+    /*
+    func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
+        <#code#>
+    }*/
     
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         buildingToSend = (marker as! BuildingMarker).building
         //performSegueWithIdentifier("ShowBuildingDetail", sender: self)
         return false
     }
-    
-    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-        var building = buildingToSend!
-        let destination = building.coords!
-        var header = building.name!
-        let addressDict = [ kABPersonAddressStreetKey as NSString: header ]
-        
-        var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
-        var options =  [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
-        
-        MKMapItem.openMapsWithItems([ MKMapItem.mapItemForCurrentLocation() ,MKMapItem(placemark: place)], launchOptions: options)
-    }
-
 
 
 }
