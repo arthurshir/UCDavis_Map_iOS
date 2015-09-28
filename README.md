@@ -2,10 +2,10 @@
 
 ## Synopsis
 
-**This is an interactive map of UC Davis that includes real-time search and navigation.**
+This is an interactive map of UC Davis that includes real-time search and navigation.
 - Search results appear on map as user types. (Search button zooms and pans map to focus on results)
 - Marker Callout redirects user to Maps Navigation.
-
+======
 
 ![Demo](http://giant.gfycat.com/LateGranularFossa.gif)
 
