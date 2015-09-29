@@ -10,8 +10,8 @@ Interactive map of UC Davis that includes real-time search and navigation.
 ![Demo](http://giant.gfycat.com/LateGranularFossa.gif)
 
 Skills used for creation:
-- Independant Learning: First time using Google Maps API and Search Bar.
-- Custom Pin: I used Sketch to create the bottom half of the pin, and attached that to a UIView, and converted the whole thing into a UIImage to create the map markers
+- **Independant Learning**: First time using Google Maps API and Search Bar.
+- **Custom Pin**: I used Sketch to create the bottom half of the pin, and attached that to a UIView, and converted the whole thing into a UIImage to create the map markers
 ![alt tag](https://github.com/fantaandcrackers/CM_Portfolio/blob/master/Illustrations/MakeMarker.png)
 
 ## Code Example
