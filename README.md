@@ -5,7 +5,8 @@
 Interactive map of UC Davis that includes real-time search and navigation.
 - **Search results**: appear on map as user types. (Search button zooms and pans map to focus on results)
 - **Navigation**: Marker Callout redirects user to Maps 
-- **Main Technologies**: Taught myself how to use Google Maps API and Search Bar for this project.
+- **Google Maps**: Self-taught Google Maps API for use of MapView, Markers, and Callout
+- **Search Bar**: Self-taught UISearchBar for use of MapView Search
 - **Parse Database**: Uses Parse Backend to store map data to allow for administrators to update Map.
 - **Custom Pin**: var markerImage = Functions.imageWithView( markerViewWithText(text) )
 ![alt tag](https://github.com/fantaandcrackers/CM_Portfolio/blob/master/Illustrations/MakeMarker.png)
