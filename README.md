@@ -1,5 +1,5 @@
 # Searchable UC Davis Map with Navigation
-
+![alt tag](https://github.com/fantaandcrackers/CM_Portfolio/blob/master/Illustrations/UCDMapIcon.png)
 ## Synopsis
 
 Interactive map of UC Davis that includes real-time search and navigation.
