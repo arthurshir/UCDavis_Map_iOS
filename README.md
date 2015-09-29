@@ -18,8 +18,9 @@ Show what the library does as concisely as possible, developers should be able t
 
 ## Motivation
 
-This iOS application was a weekend project I started as part of my application for the iOS Developer job position at Creative Media.
+This iOS application was a weekend project I started as part of my application for the iOS Developer job position at Creative Media. Note: Code still needs to be restructured and cleaned since I've worked on it only through this weekend.
 
 ## Installation
 
 Ready to Run after Git Pull.
+Due to pods, use xcworkspace file instead of xcodeproj file.
