@@ -11,7 +11,7 @@ Interactive map of UC Davis that includes real-time search and navigation.
 ![alt tag](https://github.com/fantaandcrackers/CM_Portfolio/blob/master/Illustrations/MakeMarker.png)
 
 ![Demo](http://giant.gfycat.com/LateGranularFossa.gif)
-![Demo](http://www.gfycat.com/UnevenHollowFantail)
+![Demo](http://www.gfycat.com/UnevenHollowFantail.gif)
 
 <!-- ## Code Example
 
