@@ -6,13 +6,12 @@ I made this iOS application over this weekend as part of my application for the 
 Interactive map of UC Davis that includes real-time search and navigation.
 - Search results appear on map as user types. (Search button zooms and pans map to focus on results)
 - Marker Callout redirects user to Maps Navigation.  
+- **Independant Learning**: Taught myself how to use Google Maps API and Search Bar for this project.
+- **Custom Pin**: var markerImage = Functions.imageWithView( markerViewWithText(text) )
+![alt tag](https://github.com/fantaandcrackers/CM_Portfolio/blob/master/Illustrations/MakeMarker.png)
+- **Parse Database**: Used Parse as a database to allow for administrators to update Map.
 
 ![Demo](http://giant.gfycat.com/LateGranularFossa.gif)
-
-Skills used for creation:
-- **Independant Learning**: First time using Google Maps API and Search Bar.
-- **Custom Pin**: I used Sketch to create the bottom half of the pin, and attached that to a UIView, and converted the whole thing into a UIImage to create the map markers
-![alt tag](https://github.com/fantaandcrackers/CM_Portfolio/blob/master/Illustrations/MakeMarker.png)
 
 ## Code Example
 

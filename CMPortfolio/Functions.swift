@@ -32,6 +32,25 @@ class Functions: NSObject {
             }
         }
     }
+    
+    /*
+    class func shouldUpdateBuildings() -> (Bool) {
+        var fiveDaysAgo = NSDate().dateByAddingTimeInterval(-86400 * 2)
+        
+        var defaults = NSUserDefaults.standardUserDefaults()
+        var lastDate: AnyObject? = defaults.objectForKey("lastUpdateDate")
+        if (lastDate == nil) {
+            defaults.setObject(NSDate(), forKey: "lastUpdateDate")
+            return true
+        } else if ( fiveDaysAgo.compare(lastDate as! NSDate) == NSComparisonResult.OrderedDescending)  {
+            // fiveDaysAgo is later than lastDate
+            defaults.setObject(NSDate(), forKey: "lastUpdateDate")
+            return true
+        } else {
+            return false
+        }
+        
+    }*/
 
     class func colorWithHexString (hex:String) -> UIColor {
         var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
