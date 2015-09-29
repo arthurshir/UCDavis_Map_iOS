@@ -9,6 +9,11 @@ Interactive map of UC Davis that includes real-time search and navigation.
 
 ![Demo](http://giant.gfycat.com/LateGranularFossa.gif)
 
+Skills used for creation:
+- Independant Learning: First time using Google Maps API and Search Bar.
+- Custom Pin: I used Sketch to create the bottom half of the pin, and attached that to a UIView, and converted the whole thing into a UIImage to create the map markers
+![alt tag](https://github.com/fantaandcrackers/CM_Portfolio/blob/master/Illustrations/MakeMarker.png)
+
 ## Code Example
 
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
