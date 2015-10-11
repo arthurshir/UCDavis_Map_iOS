@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -19,23 +19,15 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5X-aN-js1" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="60" width="600" height="585"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-V1-8w5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LECTURE HALL MAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JB-rB-hli">
-                                        <rect key="frame" x="224" y="30" width="153" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="153" id="ohK-Rx-t7m"/>
-                                            <constraint firstAttribute="height" constant="21" id="piG-GJ-Wyj"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="15"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65O-dC-YUQ">
                                         <rect key="frame" x="520" y="22" width="80" height="36"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="ZxQ-Fe-hJu"/>
                                             <constraint firstAttribute="width" constant="80" id="iD1-UK-hX8"/>
@@ -47,14 +39,31 @@
                                             <action selector="touchSearch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uQV-vK-lGt"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxT-pQ-W2w">
+                                        <rect key="frame" x="191" y="23" width="219" height="37"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="EoK-qi-Nhx"/>
+                                            <constraint firstAttribute="width" constant="219" id="Exg-6e-Ir7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="15"/>
+                                        <state key="normal" title="BUILDINGS">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touchTitle:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Kcl-Uf-De8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" red="0.1176470588" green="0.27450980390000002" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="6JB-rB-hli" firstAttribute="top" secondItem="Gee-V1-8w5" secondAttribute="top" constant="30" id="38K-ap-jTs"/>
                                     <constraint firstAttribute="trailing" secondItem="65O-dC-YUQ" secondAttribute="trailing" id="8Dt-Ub-kao"/>
                                     <constraint firstAttribute="height" constant="60" id="Wmd-ma-vod"/>
-                                    <constraint firstAttribute="centerX" secondItem="6JB-rB-hli" secondAttribute="centerX" constant="-0.5" id="jar-8G-USu"/>
+                                    <constraint firstItem="UxT-pQ-W2w" firstAttribute="top" secondItem="Gee-V1-8w5" secondAttribute="top" constant="23" id="mHu-fY-alL"/>
                                     <constraint firstAttribute="bottom" secondItem="65O-dC-YUQ" secondAttribute="bottom" constant="2" id="mpW-0r-1zu"/>
+                                    <constraint firstAttribute="centerX" secondItem="UxT-pQ-W2w" secondAttribute="centerX" constant="-0.5" id="rdh-VS-O54"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
@@ -65,12 +74,14 @@
                             </view>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ceB-SV-loO">
                                 <rect key="frame" x="0.0" y="60" width="600" height="44"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0GK-uw-e5A"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Gee-V1-8w5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="Abu-T5-OEh"/>
@@ -86,6 +97,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="categoryButton" destination="UxT-pQ-W2w" id="Gtv-ed-iBI"/>
+                        <outlet property="customNavBar" destination="Gee-V1-8w5" id="leb-xd-mKA"/>
                         <outlet property="mapView" destination="A5X-aN-js1" id="9CA-QJ-6BF"/>
                         <outlet property="searchBar" destination="ceB-SV-loO" id="KYW-4J-j1G"/>
                         <outlet property="searchButton" destination="65O-dC-YUQ" id="eic-bo-FGY"/>

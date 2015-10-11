@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Aashir. All rights reserved.
 //
 
+import CoreData
 import UIKit
 import GoogleMaps
 import MapKit
@@ -24,6 +25,9 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
         iv.image = UIImage(named: "Search")
         iv.center = CGPointMake(searchButton.frame.width/2 + 12, searchButton.frame.height/2)
         searchButton.addSubview(iv)
+        cPicker.frame = CGRectMake(0, -cPicker.frame.height, cPicker.frame.width, cPicker.frame.height)
+        cPicker.center = CGPointMake(view.center.x, cPicker.center.y)
+        view.insertSubview(cPicker, belowSubview: customNavBar)
         //navigationController?.navigationBar.status
     }
 
@@ -33,8 +37,11 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     }
     
     // ---------- Variables ---------- //
+    @IBOutlet var categoryButton: UIButton!
+    @IBOutlet var customNavBar: UIView!
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var searchBar: UISearchBar!
+    var cPicker = CategoryPickerV.makeCPV()
     var buildingsToHide = [AnyObject]()
     var visibleBuildings = [AnyObject]()
     var buildingObjects = NSMutableArray()
@@ -46,6 +53,19 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     // ---------- Retrieval ---------- //
     
     func refreshMap() {
+        Functions.getDavisBuildings { (success, buildings) -> Void in
+            // Retrieve Buildings from Core Data
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            let fetchRequest = NSFetchRequest(entityName: "Buildings")
+            let buil = managedContext?.executeFetchRequest(fetchRequest, error: nil)
+            if ( buil != nil) {
+                self.buildings = buil!
+                self.visibleBuildings = buil!
+                self.addToMap()
+            }
+        }
+        /*
         Functions.getBuildings { (success, buildings) -> Void in
             if (success == nil) {
                 // Error
@@ -55,27 +75,24 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
                 self.addToMap()
             }
         }
+        */
     }
     
     func addToMap() {
         mapView.clear()
         buildingObjects.removeAllObjects()
         for (var i = 0; i < buildings.count; i++) {
-            if let building = buildings[i] as? PFObject {
-                var point = building.objectForKey("location") as? PFGeoPoint
-                var name = building.objectForKey("name") as? String
-                var description = building.objectForKey("description") as? String
-                if point != nil {
-                    var marker = LabelMarker.markerWithText(name!)
-                    marker.position = CLLocationCoordinate2DMake(point!.latitude, point!.longitude)
-                    //marker.appearAnimation = kGMSMarkerAnimationPop
-                    marker.map = mapView
-                    marker.building = BuildingObject.makeBuilding(name!, coords: marker.position)
-                    buildingObjects.addObject( BuildingObject.makeBuilding(name!, coords: marker.position) )
-                    
-                } else {
-                    println("MMVC: point was nil?")
-                }
+            if let building = buildings[i] as? Buildings {
+
+                var name = building.name
+                var description = "temp"
+                
+                var marker = LabelMarker.markerWithText(name)
+                marker.position = CLLocationCoordinate2DMake( CLLocationDegrees(building.lat), CLLocationDegrees(building.lng) )
+                //marker.appearAnimation = kGMSMarkerAnimationPop
+                marker.map = mapView
+                marker.building = BuildingObject.makeBuilding(name, coords: marker.position)
+                buildingObjects.addObject( BuildingObject.makeBuilding(name, coords: marker.position) )
                 
             } else {
                 println("MMVC: Not PFObject?")
@@ -120,6 +137,39 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
             }
         }
         
+    }
+    
+    // ---------- Category ---------- //
+    
+    var pickerIsOpen = false
+    
+    func closePicker() {
+        UIView.beginAnimations("showPicker", context: nil)
+        UIView.setAnimationDuration(0.2)
+        UIView.setAnimationCurve(UIViewAnimationCurve.EaseIn)
+        cPicker.frame = CGRectMake(0, -cPicker.frame.height, cPicker.frame.width, cPicker.frame.height)
+        cPicker.center = CGPointMake(view.center.x, cPicker.center.y)
+        UIView.commitAnimations()
+        pickerIsOpen = false
+    }
+    
+    func openPicker() {
+        UIView.beginAnimations("showPicker", context: nil)
+        UIView.setAnimationDuration(0.3)
+        UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
+        cPicker.frame = CGRectMake(0, customNavBar.frame.height, cPicker.frame.width, cPicker.frame.height)
+        cPicker.center = CGPointMake(view.center.x, cPicker.center.y)
+        UIView.commitAnimations()
+        pickerIsOpen = true
+    }
+    
+    
+    @IBAction func touchTitle(sender: AnyObject) {
+        if (pickerIsOpen) {
+            closePicker()
+        } else {
+            openPicker()
+        }
     }
     
     // ---------- Search ---------- //
@@ -167,9 +217,11 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     func filterContentForText(searchText: String) {
         if searchText == "" {
             visibleBuildings = buildingObjects as [AnyObject]
+            println(visibleBuildings.count, "Buildings ")
         } else {
             var resultPredicate = NSPredicate(format: "name contains[c] %@", searchText)
             visibleBuildings = buildingObjects.filteredArrayUsingPredicate(resultPredicate)
+            println(visibleBuildings.count, "Buildings ")
         }
     }
     

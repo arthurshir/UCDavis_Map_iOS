@@ -18,6 +18,9 @@
 		18B1D2731BB5E69100E00538 /* LabelMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1D2721BB5E69100E00538 /* LabelMarker.swift */; };
 		18B1D29C1BB78E6800E00538 /* BuildingMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1D29B1BB78E6800E00538 /* BuildingMarker.swift */; };
 		18B1D29E1BB78EF800E00538 /* BuildingDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1D29D1BB78EF800E00538 /* BuildingDetailVC.swift */; };
+		18FB0B721BCA38DB00F98209 /* CategoryPickerV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB0B711BCA38DB00F98209 /* CategoryPickerV.swift */; };
+		18FB0BA61BCA55C900F98209 /* LocalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18FB0BA41BCA55C900F98209 /* LocalModel.xcdatamodeld */; };
+		18FB0BA81BCA56CB00F98209 /* Buildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB0BA71BCA56CB00F98209 /* Buildings.swift */; };
 		D71F14D570B10C922EF4A788 /* libPods-CMPortfolio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A202DCE2DB60BCBF1A7B8DF /* libPods-CMPortfolio.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +51,9 @@
 		18B1D2721BB5E69100E00538 /* LabelMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelMarker.swift; sourceTree = "<group>"; };
 		18B1D29B1BB78E6800E00538 /* BuildingMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingMarker.swift; sourceTree = "<group>"; };
 		18B1D29D1BB78EF800E00538 /* BuildingDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingDetailVC.swift; sourceTree = "<group>"; };
+		18FB0B711BCA38DB00F98209 /* CategoryPickerV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerV.swift; sourceTree = "<group>"; };
+		18FB0BA51BCA55C900F98209 /* LocalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalModel.xcdatamodel; sourceTree = "<group>"; };
+		18FB0BA71BCA56CB00F98209 /* Buildings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buildings.swift; sourceTree = "<group>"; };
 		7A202DCE2DB60BCBF1A7B8DF /* libPods-CMPortfolio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CMPortfolio.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A1A5F98C6D10FFE4778CC16 /* Pods-CMPortfolio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMPortfolio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CMPortfolio/Pods-CMPortfolio.debug.xcconfig"; sourceTree = "<group>"; };
 		A8777AA8405BC00D9B563CB7 /* Pods-CMPortfolio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMPortfolio.release.xcconfig"; path = "Pods/Target Support Files/Pods-CMPortfolio/Pods-CMPortfolio.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +141,9 @@
 				18B1D2721BB5E69100E00538 /* LabelMarker.swift */,
 				18B1D29B1BB78E6800E00538 /* BuildingMarker.swift */,
 				18385E6A1BB8FAF500543EDB /* BuildingObject.swift */,
+				18FB0B711BCA38DB00F98209 /* CategoryPickerV.swift */,
+				18FB0BA71BCA56CB00F98209 /* Buildings.swift */,
+				18FB0BA41BCA55C900F98209 /* LocalModel.xcdatamodeld */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -305,7 +314,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				18385E6B1BB8FAF500543EDB /* BuildingObject.swift in Sources */,
+				18FB0BA81BCA56CB00F98209 /* Buildings.swift in Sources */,
 				18B1D26D1BB5E07C00E00538 /* MainMapVC.swift in Sources */,
+				18FB0B721BCA38DB00F98209 /* CategoryPickerV.swift in Sources */,
+				18FB0BA61BCA55C900F98209 /* LocalModel.xcdatamodeld in Sources */,
 				1888C6231BB552C3001F60DD /* AppDelegate.swift in Sources */,
 				18B1D2711BB5E5FF00E00538 /* Functions.swift in Sources */,
 				18B1D2731BB5E69100E00538 /* LabelMarker.swift in Sources */,
@@ -532,6 +544,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		18FB0BA41BCA55C900F98209 /* LocalModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				18FB0BA51BCA55C900F98209 /* LocalModel.xcdatamodel */,
+			);
+			currentVersion = 18FB0BA51BCA55C900F98209 /* LocalModel.xcdatamodel */;
+			path = LocalModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1888C6151BB552C3001F60DD /* Project object */;
 }
