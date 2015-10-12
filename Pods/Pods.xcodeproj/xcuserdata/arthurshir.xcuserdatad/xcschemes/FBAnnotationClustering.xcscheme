@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9480679E0789836E6B6C68A6'
-               BlueprintName = 'Parse'
+               BlueprintIdentifier = '249ABD272B2B1287D8AB4903'
+               BlueprintName = 'FBAnnotationClustering'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libParse.a'>
+               BuildableName = 'libFBAnnotationClustering.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

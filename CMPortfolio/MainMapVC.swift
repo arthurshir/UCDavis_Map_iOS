@@ -102,7 +102,15 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     }
     
     func setVisibleOnMap(withMove: Bool) {
-        mapView.clear()
+        //mapView.clear()
+        
+        /*
+        var m = mapView.ma
+        
+        for b in buildingObjects {
+            b.visible = false
+        }*/
+        
         if (visibleBuildings.count > 0 ) {
             var b1 = visibleBuildings.first as! BuildingObject
             var maxLat = b1.coords!.latitude
@@ -111,10 +119,12 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
             var minLon = b1.coords!.longitude
             for (var i = 0; i < visibleBuildings.count; i++) {
                 var bo = visibleBuildings[i] as! BuildingObject
+                //bo.vis
+                /*
                 var marker = LabelMarker.markerWithText(bo.name!)
                 marker.position = bo.coords!
                 marker.map = mapView
-                marker.building = bo
+                marker.building = bo*/
                 
                 if (marker.position.longitude > maxLon) {
                     maxLon = marker.position.longitude

@@ -10,6 +10,7 @@
 #define CMPortfolio_Bridging_Header_h
 
 #import <GoogleMaps/GoogleMaps.h>
+#import <FBAnnotationClustering/FBAnnotationClustering.h>
 #import <Parse/Parse.h>
 #import <Bolts/BFTask.h>
 

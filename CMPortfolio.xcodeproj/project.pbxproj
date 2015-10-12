@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		18385E6B1BB8FAF500543EDB /* BuildingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18385E6A1BB8FAF500543EDB /* BuildingObject.swift */; };
+		185ED5041BCB14DC0047E95A /* AnnotationCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ED5031BCB14DC0047E95A /* AnnotationCluster.swift */; };
+		185ED5071BCB159C0047E95A /* QuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ED5061BCB159C0047E95A /* QuadTree.swift */; };
+		185ED5091BCB15FB0047E95A /* QuadTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ED5081BCB15FB0047E95A /* QuadTreeNode.swift */; };
 		1888C6231BB552C3001F60DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888C6221BB552C3001F60DD /* AppDelegate.swift */; };
 		1888C6281BB552C3001F60DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1888C6261BB552C3001F60DD /* Main.storyboard */; };
 		1888C62A1BB552C3001F60DD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1888C6291BB552C3001F60DD /* Images.xcassets */; };
@@ -36,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		18385E6A1BB8FAF500543EDB /* BuildingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingObject.swift; sourceTree = "<group>"; };
+		185ED5031BCB14DC0047E95A /* AnnotationCluster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationCluster.swift; sourceTree = "<group>"; };
+		185ED5061BCB159C0047E95A /* QuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadTree.swift; sourceTree = "<group>"; };
+		185ED5081BCB15FB0047E95A /* QuadTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadTreeNode.swift; sourceTree = "<group>"; };
 		1888C61D1BB552C3001F60DD /* CMPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1888C6211BB552C3001F60DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1888C6221BB552C3001F60DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		185ED5051BCB14E50047E95A /* Clustering */ = {
+			isa = PBXGroup;
+			children = (
+				185ED5031BCB14DC0047E95A /* AnnotationCluster.swift */,
+				185ED5061BCB159C0047E95A /* QuadTree.swift */,
+				185ED5081BCB15FB0047E95A /* QuadTreeNode.swift */,
+			);
+			name = Clustering;
+			sourceTree = "<group>";
+		};
 		1888C6141BB552C3001F60DD = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +120,7 @@
 				18B1D26F1BB5E4BE00E00538 /* General */,
 				18B1D26E1BB5E4B300E00538 /* Custom */,
 				1888C6201BB552C3001F60DD /* Supporting Files */,
+				185ED5051BCB14E50047E95A /* Clustering */,
 			);
 			path = CMPortfolio;
 			sourceTree = "<group>";
@@ -190,6 +207,7 @@
 				1888C61A1BB552C3001F60DD /* Frameworks */,
 				1888C61B1BB552C3001F60DD /* Resources */,
 				689B98C1BF0F5362A712A982 /* Copy Pods Resources */,
+				84A7AEB0F6498273B81FACEC /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -306,6 +324,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CMPortfolio/Pods-CMPortfolio-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		84A7AEB0F6498273B81FACEC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CMPortfolio/Pods-CMPortfolio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -313,13 +346,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185ED5071BCB159C0047E95A /* QuadTree.swift in Sources */,
 				18385E6B1BB8FAF500543EDB /* BuildingObject.swift in Sources */,
 				18FB0BA81BCA56CB00F98209 /* Buildings.swift in Sources */,
 				18B1D26D1BB5E07C00E00538 /* MainMapVC.swift in Sources */,
 				18FB0B721BCA38DB00F98209 /* CategoryPickerV.swift in Sources */,
 				18FB0BA61BCA55C900F98209 /* LocalModel.xcdatamodeld in Sources */,
 				1888C6231BB552C3001F60DD /* AppDelegate.swift in Sources */,
+				185ED5091BCB15FB0047E95A /* QuadTreeNode.swift in Sources */,
 				18B1D2711BB5E5FF00E00538 /* Functions.swift in Sources */,
+				185ED5041BCB14DC0047E95A /* AnnotationCluster.swift in Sources */,
 				18B1D2731BB5E69100E00538 /* LabelMarker.swift in Sources */,
 				18B1D29C1BB78E6800E00538 /* BuildingMarker.swift in Sources */,
 				18B1D29E1BB78EF800E00538 /* BuildingDetailVC.swift in Sources */,
