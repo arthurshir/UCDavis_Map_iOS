@@ -23,7 +23,7 @@ class CategoryPickerV: UIView {
     
     
     class func makeCPV() -> CategoryPickerV {
-        var cpv = CategoryPickerV()
+        let cpv = CategoryPickerV()
         cpv.frame = CGRectMake( CGFloat(0), CGFloat(0), CGFloat(cpv.width), CGFloat(cpv.heightM*cpv.categories.count + 10) )
         cpv.backgroundColor = Functions.themeColor()
         cpv.frame = CGRectMake(0, -cpv.frame.height, cpv.frame.width, cpv.frame.height)
@@ -44,12 +44,12 @@ class CategoryPickerV: UIView {
     
     func setupButtons() {
         for (var i = 0; i < categories.count; i++) {
-            var b = UIButton(frame: Functions.makeFrame( (width - buttonWidth)/2, y: 10 +  i*heightM, width: buttonWidth, height: buttonHeight) )
+            let b = UIButton(frame: Functions.makeFrame( (width - buttonWidth)/2, y: 10 +  i*heightM, width: buttonWidth, height: buttonHeight) )
             b.setTitle(categories[i], forState: UIControlState.Normal)
             b.titleLabel?.font = UIFont(name: "Avenir-Black", size: 15)
             b.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
             b.contentEdgeInsets = UIEdgeInsetsMake(0, 40, 0, 0)
-            var img = UIImageView(frame: CGRectMake(3, 5, 26, 26))
+            let img = UIImageView(frame: CGRectMake(3, 5, 26, 26))
             img.image = UIImage(named: categories[i])
             b.addSubview(img)
             

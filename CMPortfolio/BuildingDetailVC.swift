@@ -23,10 +23,10 @@ class BuildingDetailVC: UIViewController {
             var header = building!.objectForKey("name") as! String
             let addressDict = [ kABPersonAddressStreetKey as NSString: header ]
             
-            var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
+            /*var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
             var options =  [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
             
-            MKMapItem.openMapsWithItems([ MKMapItem.mapItemForCurrentLocation() ,MKMapItem(placemark: place)], launchOptions: options)
+            MKMapItem.openMapsWithItems([ MKMapItem.mapItemForCurrentLocation() ,MKMapItem(placemark: place)], launchOptions: options)*/
         }
     }
     

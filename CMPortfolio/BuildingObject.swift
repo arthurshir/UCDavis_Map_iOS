@@ -14,7 +14,7 @@ class BuildingObject: NSObject {
     var coords : CLLocationCoordinate2D?
     
     class func makeBuilding(name: String, coords: CLLocationCoordinate2D) -> BuildingObject {
-        var bo = BuildingObject()
+        let bo = BuildingObject()
         bo.name = name
         bo.coords = coords
         return bo

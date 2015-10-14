@@ -21,7 +21,7 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
         setupMap()
         setupSearch()
         CLLocationManager().startUpdatingLocation()
-        var iv = UIImageView(frame: CGRectMake(0, 0, 20, 20))
+        let iv = UIImageView(frame: CGRectMake(0, 0, 20, 20))
         iv.image = UIImage(named: "Search")
         iv.center = CGPointMake(searchButton.frame.width/2 + 12, searchButton.frame.height/2)
         searchButton.addSubview(iv)
@@ -58,10 +58,10 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext
             let fetchRequest = NSFetchRequest(entityName: "Buildings")
-            let buil = managedContext?.executeFetchRequest(fetchRequest, error: nil)
+            let buil = try? managedContext?.executeFetchRequest(fetchRequest)
             if ( buil != nil) {
-                self.buildings = buil!
-                self.visibleBuildings = buil!
+                self.buildings = buil!!
+                self.visibleBuildings = buil!!
                 self.addToMap()
             }
         }
@@ -84,10 +84,10 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
         for (var i = 0; i < buildings.count; i++) {
             if let building = buildings[i] as? Buildings {
 
-                var name = building.name
+                let name = building.name
                 var description = "temp"
                 
-                var marker = LabelMarker.markerWithText(name)
+                let marker = LabelMarker.markerWithText(name)
                 marker.position = CLLocationCoordinate2DMake( CLLocationDegrees(building.lat), CLLocationDegrees(building.lng) )
                 //marker.appearAnimation = kGMSMarkerAnimationPop
                 marker.map = mapView
@@ -95,7 +95,7 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
                 buildingObjects.addObject( BuildingObject.makeBuilding(name, coords: marker.position) )
                 
             } else {
-                println("MMVC: Not PFObject?")
+                print("MMVC: Not PFObject?")
             }
             
         }
@@ -112,11 +112,11 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
         }*/
         
         if (visibleBuildings.count > 0 ) {
-            var b1 = visibleBuildings.first as! BuildingObject
-            var maxLat = b1.coords!.latitude
-            var maxLon = b1.coords!.longitude
-            var minLat = b1.coords!.latitude
-            var minLon = b1.coords!.longitude
+            let b1 = visibleBuildings.first as! BuildingObject
+            let maxLat = b1.coords!.latitude
+            let maxLon = b1.coords!.longitude
+            let minLat = b1.coords!.latitude
+            let minLon = b1.coords!.longitude
             for (var i = 0; i < visibleBuildings.count; i++) {
                 var bo = visibleBuildings[i] as! BuildingObject
                 //bo.vis
@@ -126,6 +126,7 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
                 marker.map = mapView
                 marker.building = bo*/
                 
+                /*
                 if (marker.position.longitude > maxLon) {
                     maxLon = marker.position.longitude
                 }
@@ -137,12 +138,12 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
                 }
                 if (marker.position.latitude < minLat) {
                     minLat = marker.position.latitude
-                }
+                }*/
             
             }
             
             if withMove == true {
-                var bounds = GMSCoordinateBounds(coordinate: CLLocationCoordinate2DMake(maxLat, minLon), coordinate: CLLocationCoordinate2DMake(minLat, maxLon))
+                let bounds = GMSCoordinateBounds(coordinate: CLLocationCoordinate2DMake(maxLat, minLon), coordinate: CLLocationCoordinate2DMake(minLat, maxLon))
                 mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 100 ))
             }
         }
@@ -190,12 +191,12 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
             // SearchBar Enabled
             searchBar.text = savedSearch
             searchBar.becomeFirstResponder()
-            filterContentForText(searchBar.text)
+            filterContentForText(searchBar.text!)
             setVisibleOnMap(false)
         } else {
             // SearchBar Disabled
             searchBar.resignFirstResponder()
-            savedSearch = searchBar.text
+            savedSearch = searchBar.text!
             searchBar.text = ""
             filterContentForText("")
             setVisibleOnMap(false)
@@ -203,9 +204,9 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        filterContentForText(searchBar.text)
+        filterContentForText(searchBar.text!)
         searchBar.resignFirstResponder()
-        savedSearch = searchBar.text
+        savedSearch = searchBar.text!
         searchBar.hidden = true
         setVisibleOnMap(true)
     }
@@ -227,11 +228,11 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     func filterContentForText(searchText: String) {
         if searchText == "" {
             visibleBuildings = buildingObjects as [AnyObject]
-            println(visibleBuildings.count, "Buildings ")
+            print(visibleBuildings.count, "Buildings ")
         } else {
-            var resultPredicate = NSPredicate(format: "name contains[c] %@", searchText)
+            let resultPredicate = NSPredicate(format: "name contains[c] %@", searchText)
             visibleBuildings = buildingObjects.filteredArrayUsingPredicate(resultPredicate)
-            println(visibleBuildings.count, "Buildings ")
+            print(visibleBuildings.count, "Buildings ")
         }
     }
     
@@ -242,7 +243,7 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     }
     
     func setupMap() {
-        var camera = GMSCameraPosition.cameraWithLatitude(38.5382322, longitude: -121.756, zoom: 15)
+        let camera = GMSCameraPosition.cameraWithLatitude(38.5382322, longitude: -121.756, zoom: 15)
         mapView.camera = camera
         mapView.setMinZoom(14.2, maxZoom: 17)
         mapView.delegate = self
@@ -256,7 +257,7 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
  
     func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
         searchBar.resignFirstResponder()
-        savedSearch = searchBar.text
+        savedSearch = searchBar.text!
         searchBar.hidden = true
     }
 
@@ -265,9 +266,9 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
         let destination = building.coords!
         var header = building.name!
         let addressDict = [ kABPersonAddressStreetKey as NSString: header ]
-        var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
+        /*var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
         var options =  [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
-        MKMapItem.openMapsWithItems([ MKMapItem.mapItemForCurrentLocation() ,MKMapItem(placemark: place)], launchOptions: options)
+        MKMapItem.openMapsWithItems([ MKMapItem.mapItemForCurrentLocation() ,MKMapItem(placemark: place)], launchOptions: options)*/
         
     }
     

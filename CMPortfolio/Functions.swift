@@ -15,18 +15,18 @@ class Functions: NSObject {
     /* Repurposed from OBJ Code at http://stackoverflow.com/questions/4334233/how-to-capture-uiview-to-uiimage-without-loss-of-quality-on-retina-display */
     class func imageWithView(view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
-        view.layer.renderInContext(UIGraphicsGetCurrentContext())
-        var img = UIGraphicsGetImageFromCurrentImageContext()
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return img
     }
     
     class func getBuildings( completion: (( success: Bool?, buildings: [AnyObject]? ) -> Void )) {
-        var query = PFQuery(className: "Map_Buildings")
+        let query = PFQuery(className: "Map_Buildings")
         query.whereKey("disabled", notEqualTo: true)
         query.findObjectsInBackgroundWithBlock { (buildings, error) -> Void in
             if error != nil {
-                println("F:", error!.description)
+                print("F:", error!.description)
                 completion(success: false, buildings: [AnyObject]())
             } else {
                 completion(success: true, buildings: buildings)
@@ -35,12 +35,15 @@ class Functions: NSObject {
     }
     
     class func getDavisBuildings( completion: (( success: Bool?, buildings: [AnyObject] ) -> Void )) {
+        
+        // Disclaimer: Code is generated from PostMan
+        
         let headers = [
             "cache-control": "no-cache",
             "postman-token": "f47aa33c-cf0a-df34-594d-aa7eceb57ead"
         ]
         
-        var request = NSMutableURLRequest(URL: NSURL(string: "http://mobile.ucdavis.edu/locations/")!,
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://mobile.ucdavis.edu/locations/")!,
             cachePolicy: .UseProtocolCachePolicy,
             timeoutInterval: 10.0)
         request.HTTPMethod = "GET"
@@ -50,39 +53,43 @@ class Functions: NSObject {
         let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if (error != nil) {
                 completion(success: false, buildings: [AnyObject]())
-                println(error)
+                print(error)
             } else {
-                let httpResponse = response as? NSHTTPURLResponse
-                var arr = NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers , error: nil) as! NSMutableArray
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject(data!, forKey: "BuildingInformation")
+                
+                var lastDate: AnyObject? = defaults.objectForKey("lastUpdateDate")
+                
+                let arr = (try! NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers )) as! NSMutableArray
                 
                 // Delete Old Buildings
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 let managedContext = appDelegate.managedObjectContext
                 let fetchRequest = NSFetchRequest(entityName: "Buildings")
                 fetchRequest.includesPropertyValues = false
-                let buil = managedContext?.executeFetchRequest(fetchRequest, error: nil)
+                let buil = try? managedContext?.executeFetchRequest(fetchRequest)
                 if (buil != nil) {
-                    if buil!.count > 0 {
-                        for b in buil! {
+                    if buil!!.count > 0 {
+                        for b in buil!! {
                             managedContext?.deleteObject(b as! NSManagedObject)
                         }
                     }
                 }
 
-                // Save New Buildings
-                var dic = arr.objectAtIndex(arr.count-1) as! NSDictionary
-                var buildings = dic.objectForKey("locations") as! [NSDictionary]
+                // Save New Buildlets
+                let dic = arr.objectAtIndex(arr.count-1) as! NSDictionary
+                let buildings = dic.objectForKey("locations") as! [NSDictionary]
                 for b in buildings {
-                    println(b)
-                    var lat = b.objectForKey("lat") as? String
-                    var lng = b.objectForKey("lng") as? String
-                    var name = b.objectForKey("name") as? String
-                    var link = b.objectForKey("link") as? String
+                    print(b)
+                    let lat = b.objectForKey("lat") as? String
+                    let lng = b.objectForKey("lng") as? String
+                    let name = b.objectForKey("name") as? String
+                    let link = b.objectForKey("link") as? String
                     if (lat == nil || lng == nil || name == nil || link == nil) {
-                        println("F: Error retrieving building components")
+                        print("F: Error retrieving building components")
                     } else {
-                        var latDouble = NSString(string: lat!).doubleValue
-                        var lngDouble = NSString(string: lng!).doubleValue
+                        let latDouble = NSString(string: lat!).doubleValue
+                        let lngDouble = NSString(string: lng!).doubleValue
                         Functions.saveBuilding(latDouble, lng: lngDouble, name: name!, link: link!)
                     }
                 }
@@ -105,15 +112,18 @@ class Functions: NSObject {
         
         //2
         
-        var building = NSEntityDescription.insertNewObjectForEntityForName("Buildings", inManagedObjectContext: managedContext!) as! Buildings
+        let building = NSEntityDescription.insertNewObjectForEntityForName("Buildings", inManagedObjectContext: managedContext!) as! Buildings
         
         building.lat = lat
         building.lng = lng
         building.name = name
         building.link = link
         
-        //3
-        managedContext!.save(nil)
+        do {
+            //3
+            try managedContext!.save()
+        } catch _ {
+        }
         
     }
     
@@ -151,13 +161,13 @@ class Functions: NSObject {
             cString = (cString as NSString).substringFromIndex(1)
         }
         
-        if (count(cString) != 6) {
+        if (cString.characters.count != 6) {
             return UIColor.grayColor()
         }
         
-        var rString = (cString as NSString).substringToIndex(2)
-        var gString = ((cString as NSString).substringFromIndex(2) as NSString).substringToIndex(2)
-        var bString = ((cString as NSString).substringFromIndex(4) as NSString).substringToIndex(2)
+        let rString = (cString as NSString).substringToIndex(2)
+        let gString = ((cString as NSString).substringFromIndex(2) as NSString).substringToIndex(2)
+        let bString = ((cString as NSString).substringFromIndex(4) as NSString).substringToIndex(2)
         
         var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
         NSScanner(string: rString).scanHexInt(&r)

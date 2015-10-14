@@ -40,7 +40,7 @@ class QuadTreeNode: NSObject {
     }
 
     class func initWithBoundingBox(box: BoundingBox) -> QuadTreeNode {
-        var node = QuadTreeNode()
+        let node = QuadTreeNode()
         node.boundingBox = box
         return node
     }
@@ -58,9 +58,9 @@ class QuadTreeNode: NSObject {
         self.southWest = QuadTreeNode()
         
         // Get Middle Lines
-        var box = self.boundingBox!
-        var xMid = (box.xf + box.x0) / 2.0
-        var yMid = (box.yf + box.y0) / 2.0
+        let box = self.boundingBox!
+        let xMid = (box.xf + box.x0) / 2.0
+        let yMid = (box.yf + box.y0) / 2.0
         
         // Set Boxes for each Quadrant
         self.northEast!.boundingBox = BoundingBox(x0: xMid, y0: box.y0, xf: box.xf, yf: yMid)
@@ -72,11 +72,11 @@ class QuadTreeNode: NSObject {
     
     func boundingBoxForMapRect(northEast: CLLocationCoordinate2D, southWest: CLLocationCoordinate2D) -> BoundingBox {
         
-        var minLat = northEast.latitude
-        var maxLat = southWest.latitude
+        let minLat = northEast.latitude
+        let maxLat = southWest.latitude
         
-        var minLon = southWest.longitude
-        var maxLon = northEast.longitude
+        let minLon = southWest.longitude
+        let maxLon = northEast.longitude
         
         return BoundingBox(x0: CGFloat(minLat), y0: CGFloat(minLon), xf: CGFloat(maxLat), yf: CGFloat(maxLon) )
         

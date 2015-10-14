@@ -16,7 +16,7 @@ class LabelMarker: UIView {
     var bottom = UIImageView()  // This is the bottom \/ that goes on the bottom of the callout
     
     class func markerViewWithText(text: String) -> LabelMarker {
-        var lm = LabelMarker()
+        let lm = LabelMarker()
         var markerBodyHeight = 25
         lm.backgroundColor = UIColor.clearColor()
         //lm.layer.borderWidth = 0.5
@@ -51,7 +51,7 @@ class LabelMarker: UIView {
     }
     
     class func markerWithText(text: String) -> BuildingMarker {
-        var marker = BuildingMarker()
+        let marker = BuildingMarker()
         marker.appearAnimation = kGMSMarkerAnimationPop
         marker.icon = Functions.imageWithView( markerViewWithText(text) )
         marker.title = "🚶"
