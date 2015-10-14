@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--MenuVC-->
@@ -239,7 +240,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="y3r-xP-Pr7" kind="show" id="WZt-WG-zUJ"/>
+                                    <segue destination="y3r-xP-Pr7" kind="show" identifier="toMap" id="WZt-WG-zUJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -269,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="1874" y="1239"/>
         </scene>
-        <!--View Controller-->
+        <!--One Location MapVC-->
         <scene sceneID="yEt-Yo-ngd">
             <objects>
-                <viewController id="y3r-xP-Pr7" sceneMemberID="viewController">
+                <viewController id="y3r-xP-Pr7" customClass="OneLocationMapVC" customModule="CMPortfolio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wp8-Wq-jTS"/>
                         <viewControllerLayoutGuide type="bottom" id="fQc-xW-xaz"/>
@@ -286,16 +287,48 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9x-cR-kAm">
+                                <rect key="frame" x="0.0" y="492" width="600" height="0.0"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1W-Qz-RIJ">
+                                        <rect key="frame" x="285" y="6" width="30" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Ss9-dL-Oql"/>
+                                            <constraint firstAttribute="height" constant="30" id="j1N-L0-ZoX"/>
+                                        </constraints>
+                                        <state key="normal" image="Favorites">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.1176470588" green="0.27450980390000002" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="U1W-Qz-RIJ" firstAttribute="centerY" secondItem="K9x-cR-kAm" secondAttribute="centerY" id="30z-b9-HOP"/>
+                                    <constraint firstItem="U1W-Qz-RIJ" firstAttribute="centerX" secondItem="K9x-cR-kAm" secondAttribute="centerX" id="JW2-i5-K7F"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KyV-Dd-tnv" firstAttribute="top" secondItem="Wp8-Wq-jTS" secondAttribute="bottom" id="AQl-Tr-I5U"/>
+                            <constraint firstItem="fQc-xW-xaz" firstAttribute="top" secondItem="K9x-cR-kAm" secondAttribute="bottom" id="aqC-ge-ggL"/>
+                            <constraint firstItem="K9x-cR-kAm" firstAttribute="top" secondItem="KyV-Dd-tnv" secondAttribute="bottom" id="cqf-25-Y27"/>
                             <constraint firstItem="fQc-xW-xaz" firstAttribute="top" secondItem="KyV-Dd-tnv" secondAttribute="bottom" id="daD-t0-Bpr"/>
+                            <constraint firstItem="K9x-cR-kAm" firstAttribute="leading" secondItem="Uea-zf-iKH" secondAttribute="leadingMargin" constant="-20" id="nLl-qz-9LC"/>
                             <constraint firstItem="KyV-Dd-tnv" firstAttribute="leading" secondItem="Uea-zf-iKH" secondAttribute="leadingMargin" constant="-20" id="v5n-WT-ZfE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K9x-cR-kAm" secondAttribute="trailing" constant="-20" id="wTQ-E6-ila"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KyV-Dd-tnv" secondAttribute="trailing" constant="-20" id="x84-1O-nqw"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vbW-bx-DhH">
+                        <rightBarButtonItems>
+                            <barButtonItem image="Nav_Info" id="Zwu-d8-aFz"/>
+                            <barButtonItem image="Nav_Favorite0" id="MeE-sZ-7LM"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QB6-dQ-8cA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -431,6 +464,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Favorites" width="64" height="64"/>
         <image name="Map" width="100" height="100"/>
+        <image name="Nav_Favorite0" width="33" height="33"/>
+        <image name="Nav_Info" width="33" height="33"/>
     </resources>
 </document>

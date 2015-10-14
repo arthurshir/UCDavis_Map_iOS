@@ -10,8 +10,30 @@ import UIKit
 
 class ListingsTVC: UITableViewController {
 
+    let sections = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var savedLoc = [LocationObj]()
+    var sectionedArr = [AnyObject]()
+    var savedPath : NSIndexPath?
+    
+    struct SortObj {
+        var name: String
+        var index: Int
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sectionedArr.removeAll()
+        savedLoc = Functions.returnArray() as! [LocationObj]
+        for chstr in sections {
+            var arr = [LocationObj]()
+            for locObj in savedLoc {
+                if locObj.name[locObj.name.startIndex] == chstr[chstr.startIndex] {
+                    arr.append(locObj)
+                }
+            }
+            sectionedArr.insert(arr, atIndex: sectionedArr.count)
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,23 +55,41 @@ class ListingsTVC: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+        return 26
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        let sa = sectionedArr[section] as! [LocationObj]
+        return sa.count
+    }
+    
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+       return sections
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
+        let locObj = (sectionedArr[indexPath.section] as! [LocationObj])[indexPath.row]
+        cell.textLabel?.text = locObj.name
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        savedPath = indexPath
+        return indexPath
     }
 
 
@@ -88,14 +128,17 @@ class ListingsTVC: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toMap" {
+            let a = segue.destinationViewController as! OneLocationMapVC
+            a.savedLocObj = (sectionedArr[savedPath!.section] as! [LocationObj])[savedPath!.row]
+        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

@@ -56,52 +56,73 @@ class Functions: NSObject {
                 print(error)
             } else {
                 let defaults = NSUserDefaults.standardUserDefaults()
-                defaults.setObject(data!, forKey: "BuildingInformation")
+                defaults.setObject(data!, forKey: "BuildingsData")
+                //let arr = (try! NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers )) as! NSMutableArray
                 
-                var lastDate: AnyObject? = defaults.objectForKey("lastUpdateDate")
-                
-                let arr = (try! NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers )) as! NSMutableArray
-                
-                // Delete Old Buildings
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                let managedContext = appDelegate.managedObjectContext
-                let fetchRequest = NSFetchRequest(entityName: "Buildings")
-                fetchRequest.includesPropertyValues = false
-                let buil = try? managedContext?.executeFetchRequest(fetchRequest)
-                if (buil != nil) {
-                    if buil!!.count > 0 {
-                        for b in buil!! {
-                            managedContext?.deleteObject(b as! NSManagedObject)
-                        }
-                    }
-                }
-
-                // Save New Buildlets
-                let dic = arr.objectAtIndex(arr.count-1) as! NSDictionary
-                let buildings = dic.objectForKey("locations") as! [NSDictionary]
-                for b in buildings {
-                    print(b)
-                    let lat = b.objectForKey("lat") as? String
-                    let lng = b.objectForKey("lng") as? String
-                    let name = b.objectForKey("name") as? String
-                    let link = b.objectForKey("link") as? String
-                    if (lat == nil || lng == nil || name == nil || link == nil) {
-                        print("F: Error retrieving building components")
-                    } else {
-                        let latDouble = NSString(string: lat!).doubleValue
-                        let lngDouble = NSString(string: lng!).doubleValue
-                        Functions.saveBuilding(latDouble, lng: lngDouble, name: name!, link: link!)
-                    }
-                }
-                
-                //println(dic.objectForKey("name") )
-                
-                completion(success: true, buildings: dic.objectForKey("locations") as! [AnyObject] )
+                completion(success: true, buildings: [AnyObject]() )
             }
         })
         
         dataTask.resume()
     }
+    
+    // Retrieve Arrays from Saved JSON Data
+    class func returnArray() -> [AnyObject] {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let data = defaults.objectForKey("BuildingsData") as? NSData
+        if data == nil { return [AnyObject]() }
+        
+        let arr = (try! NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers )) as! NSMutableArray
+        
+        var ret = [AnyObject]()
+        
+        let dic = arr.objectAtIndex(arr.count-1) as! NSDictionary
+        let buildings = dic.objectForKey("locations") as! [NSDictionary]
+        for b in buildings {
+            //print(b)
+            let lat = b.objectForKey("lat") as? String
+            let lng = b.objectForKey("lng") as? String
+            let name = b.objectForKey("name") as? String
+            let link = b.objectForKey("link") as? String
+            if (lat == nil || lng == nil || name == nil || link == nil) {
+                print("F: Error retrieving building components")
+            } else {
+                // Save Each Building as a "Buildings" Object
+                let latDouble = NSString(string: lat!).doubleValue
+                let lngDouble = NSString(string: lng!).doubleValue
+                let b = LocationObj()
+                b.lat = latDouble
+                b.lng = lngDouble
+                b.name = name!
+                b.link = link!
+                ret.append(b)
+            }
+        }
+        
+        
+        return ret
+        
+        /*
+        // Save New Buildlets
+        let dic = arr.objectAtIndex(arr.count-1) as! NSDictionary
+        let buildings = dic.objectForKey("locations") as! [NSDictionary]
+        for b in buildings {
+            print(b)
+            let lat = b.objectForKey("lat") as? String
+            let lng = b.objectForKey("lng") as? String
+            let name = b.objectForKey("name") as? String
+            let link = b.objectForKey("link") as? String
+            if (lat == nil || lng == nil || name == nil || link == nil) {
+                print("F: Error retrieving building components")
+            } else {
+                let latDouble = NSString(string: lat!).doubleValue
+                let lngDouble = NSString(string: lng!).doubleValue
+                Functions.saveBuilding(latDouble, lng: lngDouble, name: name!, link: link!)
+            }
+        }
+        */
+    }
+    
     
     class func saveBuilding(lat: NSNumber, lng: NSNumber, name: String, link: String) {
         //1
@@ -177,4 +198,5 @@ class Functions: NSObject {
         
         return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
     }
+
 }

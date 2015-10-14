@@ -15,6 +15,8 @@ class OverallNC: UINavigationController {
         navigationBar.barTintColor = Functions.themeColor()
         navigationBar.tintColor = UIColor.whiteColor()
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        Functions.getDavisBuildings { (success, buildings) -> Void in
+        }
         // Do any additional setup after loading the view.
     }
 
