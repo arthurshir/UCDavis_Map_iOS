@@ -161,8 +161,6 @@ class Functions: NSObject {
         
         let arr = (try! NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers )) as! NSMutableArray
         
-        var ret = [AnyObject]()
-        
         let dic = arr.objectAtIndex(arr.count - 1 - catIndex) as! NSDictionary
         let name = dic.objectForKey("name") as! String
         return name

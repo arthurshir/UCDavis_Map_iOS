@@ -17,17 +17,21 @@ class BuildingDetailVC: UIViewController {
     @IBOutlet var buildingLabel: UILabel!
     @IBAction func touchDirections(sender: AnyObject) {
 
-        let point = building!.objectForKey("location") as? PFGeoPoint
+        /*
+        var point = building!.objectForKey("location") as? PFGeoPoint
         if point != nil {
+            
+        
             let destination = CLLocationCoordinate2D(latitude: point!.latitude, longitude: point!.longitude)
             var header = building!.objectForKey("name") as! String
             let addressDict = [ kABPersonAddressStreetKey as NSString: header ]
             
-            /*var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
+            var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
             var options =  [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
             
-            MKMapItem.openMapsWithItems([ MKMapItem.mapItemForCurrentLocation() ,MKMapItem(placemark: place)], launchOptions: options)*/
+            MKMapItem.openMapsWithItems([ MKMapItem.mapItemForCurrentLocation() ,MKMapItem(placemark: place)], launchOptions: options)
         }
+        */
     }
     
     

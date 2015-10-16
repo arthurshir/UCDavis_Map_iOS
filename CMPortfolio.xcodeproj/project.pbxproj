@@ -12,7 +12,6 @@
 		185ED5071BCB159C0047E95A /* QuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ED5061BCB159C0047E95A /* QuadTree.swift */; };
 		185ED5091BCB15FB0047E95A /* QuadTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ED5081BCB15FB0047E95A /* QuadTreeNode.swift */; };
 		1862371D1BCF9BCE00A27C4D /* ListingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862371C1BCF9BCD00A27C4D /* ListingsVC.swift */; settings = {ASSET_TAGS = (); }; };
-		187695281BCE257E009F433D /* ListingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187695271BCE257E009F433D /* ListingsTVC.swift */; settings = {ASSET_TAGS = (); }; };
 		1876952A1BCE2C77009F433D /* OverallNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187695291BCE2C77009F433D /* OverallNC.swift */; settings = {ASSET_TAGS = (); }; };
 		1876952C1BCE3358009F433D /* LocationObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876952B1BCE3358009F433D /* LocationObj.swift */; settings = {ASSET_TAGS = (); }; };
 		1876952E1BCEEE49009F433D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876952D1BCEEE49009F433D /* Extensions.swift */; settings = {ASSET_TAGS = (); }; };
@@ -51,7 +50,6 @@
 		185ED5061BCB159C0047E95A /* QuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadTree.swift; sourceTree = "<group>"; };
 		185ED5081BCB15FB0047E95A /* QuadTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadTreeNode.swift; sourceTree = "<group>"; };
 		1862371C1BCF9BCD00A27C4D /* ListingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingsVC.swift; sourceTree = "<group>"; };
-		187695271BCE257E009F433D /* ListingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingsTVC.swift; sourceTree = "<group>"; };
 		187695291BCE2C77009F433D /* OverallNC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverallNC.swift; sourceTree = "<group>"; };
 		1876952B1BCE3358009F433D /* LocationObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationObj.swift; sourceTree = "<group>"; };
 		1876952D1BCEEE49009F433D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -109,6 +107,15 @@
 			name = Clustering;
 			sourceTree = "<group>";
 		};
+		1862375A1BD0A9F800A27C4D /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				18B1D26C1BB5E07C00E00538 /* MainMapVC.swift */,
+				18B1D29D1BB78EF800E00538 /* BuildingDetailVC.swift */,
+			);
+			name = Old;
+			sourceTree = "<group>";
+		};
 		1888C6141BB552C3001F60DD = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +142,7 @@
 				18B1D26F1BB5E4BE00E00538 /* General */,
 				18B1D26E1BB5E4B300E00538 /* Custom */,
 				1888C6201BB552C3001F60DD /* Supporting Files */,
+				1862375A1BD0A9F800A27C4D /* Old */,
 				185ED5051BCB14E50047E95A /* Clustering */,
 			);
 			path = CMPortfolio;
@@ -187,12 +195,9 @@
 			children = (
 				1888C6221BB552C3001F60DD /* AppDelegate.swift */,
 				187695291BCE2C77009F433D /* OverallNC.swift */,
-				18B1D26C1BB5E07C00E00538 /* MainMapVC.swift */,
-				18B1D29D1BB78EF800E00538 /* BuildingDetailVC.swift */,
 				18C3FA081BCC4F27008FEAD8 /* MenuVC.swift */,
-				187695271BCE257E009F433D /* ListingsTVC.swift */,
-				187695301BCEF8C8009F433D /* OneLocationMapVC.swift */,
 				1862371C1BCF9BCD00A27C4D /* ListingsVC.swift */,
+				187695301BCEF8C8009F433D /* OneLocationMapVC.swift */,
 				1888C6291BB552C3001F60DD /* Images.xcassets */,
 				1888C6261BB552C3001F60DD /* Main.storyboard */,
 				1888C62B1BB552C3001F60DD /* LaunchScreen.xib */,
@@ -266,7 +271,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Aashir;
 				TargetAttributes = {
 					1888C61C1BB552C3001F60DD = {
@@ -376,7 +381,6 @@
 				1876952E1BCEEE49009F433D /* Extensions.swift in Sources */,
 				185ED5071BCB159C0047E95A /* QuadTree.swift in Sources */,
 				18385E6B1BB8FAF500543EDB /* BuildingObject.swift in Sources */,
-				187695281BCE257E009F433D /* ListingsTVC.swift in Sources */,
 				18FB0BA81BCA56CB00F98209 /* Buildings.swift in Sources */,
 				1876952C1BCE3358009F433D /* LocationObj.swift in Sources */,
 				18C3FA091BCC4F27008FEAD8 /* MenuVC.swift in Sources */,
@@ -453,6 +457,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -526,6 +531,7 @@
 				INFOPLIST_FILE = CMPortfolio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Aashir.CMPortfolio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CMPortfolio/Bridging-Header.h";
 			};
@@ -544,6 +550,7 @@
 				INFOPLIST_FILE = CMPortfolio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Aashir.CMPortfolio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CMPortfolio/Bridging-Header.h";
 			};
@@ -563,6 +570,7 @@
 				);
 				INFOPLIST_FILE = CMPortfolioTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Aashir.CMPortfolio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CMPortfolio.app/CMPortfolio";
 			};
@@ -578,6 +586,7 @@
 				);
 				INFOPLIST_FILE = CMPortfolioTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Aashir.CMPortfolio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CMPortfolio.app/CMPortfolio";
 			};

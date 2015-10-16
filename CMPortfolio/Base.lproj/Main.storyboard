@@ -171,79 +171,6 @@ Directory</string>
             </objects>
             <point key="canvasLocation" x="1213" y="1239"/>
         </scene>
-        <!--Buildings-->
-        <scene sceneID="TsS-Yk-wio">
-            <objects>
-                <tableViewController id="VGg-gC-gFB" customClass="ListingsTVC" customModule="CMPortfolio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fsz-Ud-Y0e">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="1Ae-Hu-3OB">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="VGg-gC-gFB" id="WrI-AJ-uxe"/>
-                            </connections>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="Hbh-bm-oVD">
-                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hbh-bm-oVD" id="hwe-BM-m5C">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <connections>
-                                    <segue destination="y3r-xP-Pr7" kind="show" identifier="toMap" id="WZt-WG-zUJ"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="VGg-gC-gFB" id="d7c-Ls-Yxn"/>
-                            <outlet property="delegate" destination="VGg-gC-gFB" id="ybZ-VB-QcC"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Buildings" id="5SB-Qn-CAq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="JWd-Gw-gMM">
-                            <connections>
-                                <action selector="touchSearch:" destination="VGg-gC-gFB" id="QCb-gL-QoV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="searchBar" destination="1Ae-Hu-3OB" id="6em-yS-BH1"/>
-                        <outlet property="searchDisplayController" destination="aLx-n5-UcM" id="I7H-G3-4Cz"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bFS-ci-NiC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="JGF-v2-YNF">
-                    <connections>
-                        <outlet property="delegate" destination="VGg-gC-gFB" id="67Y-IP-gHX"/>
-                        <outlet property="searchContentsController" destination="VGg-gC-gFB" id="8Ir-Yc-92R"/>
-                        <outlet property="searchResultsDataSource" destination="VGg-gC-gFB" id="R49-Rp-5QO"/>
-                        <outlet property="searchResultsDelegate" destination="VGg-gC-gFB" id="j7N-Kt-RDM"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="aLx-n5-UcM">
-                    <connections>
-                        <outlet property="delegate" destination="VGg-gC-gFB" id="eTg-1w-PJb"/>
-                        <outlet property="searchBar" destination="1Ae-Hu-3OB" id="NR8-si-YR4"/>
-                        <outlet property="searchContentsController" destination="VGg-gC-gFB" id="g2s-U6-hZ8"/>
-                        <outlet property="searchResultsDataSource" destination="VGg-gC-gFB" id="HL6-ci-dTa"/>
-                        <outlet property="searchResultsDelegate" destination="VGg-gC-gFB" id="lFH-qh-oP6"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="1874" y="1239"/>
-        </scene>
         <!--ListingsVC-->
         <scene sceneID="Xad-f0-vBd">
             <objects>
@@ -321,7 +248,7 @@ Directory</string>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1874" y="1914"/>
+            <point key="canvasLocation" x="1858" y="1239"/>
         </scene>
         <!--One Location MapVC-->
         <scene sceneID="yEt-Yo-ngd">
@@ -335,13 +262,13 @@ Directory</string>
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KyV-Dd-tnv" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="462"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KyV-Dd-tnv" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="506"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K9x-cR-kAm">
-                                <rect key="frame" x="0.0" y="526" width="600" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9x-cR-kAm">
+                                <rect key="frame" x="0.0" y="506" width="600" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.1176470588" green="0.27450980390000002" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -373,7 +300,7 @@ Directory</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QB6-dQ-8cA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2533" y="1825"/>
+            <point key="canvasLocation" x="2488" y="1239"/>
         </scene>
         <!--Main MapVC-->
         <scene sceneID="ufC-wZ-h7g">
@@ -387,15 +314,15 @@ Directory</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A5X-aN-js1" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5X-aN-js1" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="60" width="600" height="585"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-V1-8w5">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-V1-8w5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65O-dC-YUQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65O-dC-YUQ">
                                         <rect key="frame" x="520" y="22" width="80" height="36"/>
                                         <animations/>
                                         <constraints>
@@ -409,7 +336,7 @@ Directory</string>
                                             <action selector="touchSearch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uQV-vK-lGt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxT-pQ-W2w">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxT-pQ-W2w">
                                         <rect key="frame" x="191" y="23" width="219" height="37"/>
                                         <animations/>
                                         <constraints>
@@ -442,7 +369,7 @@ Directory</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <searchBar contentMode="redraw" misplaced="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ceB-SV-loO">
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ceB-SV-loO">
                                 <rect key="frame" x="0.0" y="60" width="600" height="44"/>
                                 <animations/>
                                 <constraints>
@@ -455,14 +382,14 @@ Directory</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Gee-V1-8w5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="Abu-T5-OEh"/>
-                            <constraint firstItem="Gee-V1-8w5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="GHB-xO-0Cj"/>
-                            <constraint firstItem="ceB-SV-loO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="MYD-EM-Ye5"/>
+                            <constraint firstItem="Gee-V1-8w5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="GHB-xO-0Cj"/>
+                            <constraint firstItem="ceB-SV-loO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="MYD-EM-Ye5"/>
                             <constraint firstItem="A5X-aN-js1" firstAttribute="top" secondItem="Gee-V1-8w5" secondAttribute="bottom" id="NlB-ry-OlZ"/>
                             <constraint firstItem="ceB-SV-loO" firstAttribute="top" secondItem="Gee-V1-8w5" secondAttribute="bottom" id="THm-qN-FEh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Gee-V1-8w5" secondAttribute="trailing" constant="-16" id="VGc-dD-CCR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="A5X-aN-js1" secondAttribute="trailing" constant="-16" id="WJt-d6-cc7"/>
-                            <constraint firstItem="A5X-aN-js1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="qcA-uM-yQ0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ceB-SV-loO" secondAttribute="trailing" constant="-16" id="vig-FJ-WfN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gee-V1-8w5" secondAttribute="trailing" constant="-20" id="VGc-dD-CCR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="A5X-aN-js1" secondAttribute="trailing" constant="-20" id="WJt-d6-cc7"/>
+                            <constraint firstItem="A5X-aN-js1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="qcA-uM-yQ0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ceB-SV-loO" secondAttribute="trailing" constant="-20" id="vig-FJ-WfN"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="A5X-aN-js1" secondAttribute="bottom" constant="-45" id="vkA-cy-FSS"/>
                         </constraints>
                     </view>
@@ -508,7 +435,4 @@ Directory</string>
         <image name="Map" width="100" height="100"/>
         <image name="Nav_Favorite0" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="AWa-oO-PUi"/>
-    </inferredMetricsTieBreakers>
 </document>

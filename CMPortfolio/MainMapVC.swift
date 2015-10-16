@@ -85,7 +85,7 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
             if let building = buildings[i] as? Buildings {
 
                 let name = building.name
-                var description = "temp"
+                //var description = "temp"
                 
                 let marker = LabelMarker.markerWithText(name)
                 marker.position = CLLocationCoordinate2DMake( CLLocationDegrees(building.lat), CLLocationDegrees(building.lng) )
@@ -118,7 +118,7 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
             let minLat = b1.coords!.latitude
             let minLon = b1.coords!.longitude
             for (var i = 0; i < visibleBuildings.count; i++) {
-                var bo = visibleBuildings[i] as! BuildingObject
+                //var bo = visibleBuildings[i] as! BuildingObject
                 //bo.vis
                 /*
                 var marker = LabelMarker.markerWithText(bo.name!)
@@ -262,11 +262,13 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     }
 
     func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-        var building = buildingToSend!
+        
+        /*
+        let building = buildingToSend!
         let destination = building.coords!
         var header = building.name!
         let addressDict = [ kABPersonAddressStreetKey as NSString: header ]
-        /*var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
+        var place = MKPlacemark(coordinate: destination, addressDictionary: addressDict)
         var options =  [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
         MKMapItem.openMapsWithItems([ MKMapItem.mapItemForCurrentLocation() ,MKMapItem(placemark: place)], launchOptions: options)*/
         
