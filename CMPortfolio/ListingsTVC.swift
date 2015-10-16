@@ -14,17 +14,25 @@ class ListingsTVC: UITableViewController {
     var savedLoc = [LocationObj]()
     var sectionedArr = [AnyObject]()
     var savedPath : NSIndexPath?
+    @IBOutlet var searchBar: UISearchBar!
     
     struct SortObj {
         var name: String
         var index: Int
     }
     
+    @IBAction func touchSearch(sender: AnyObject) {
+        //searchBar.frame = CGRectMake(0, 0, tableView.frame.width, 55)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //searchBar.frame = CGRectMake(0, 0, tableView.frame.width, 0)
+        
         sectionedArr.removeAll()
-        savedLoc = Functions.returnArray() as! [LocationObj]
+        savedLoc = Functions.returnArray(0) as! [LocationObj]
         for chstr in sections {
             var arr = [LocationObj]()
             for locObj in savedLoc {
@@ -34,6 +42,7 @@ class ListingsTVC: UITableViewController {
             }
             sectionedArr.insert(arr, atIndex: sectionedArr.count)
         }
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

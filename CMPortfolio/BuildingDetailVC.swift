@@ -17,7 +17,7 @@ class BuildingDetailVC: UIViewController {
     @IBOutlet var buildingLabel: UILabel!
     @IBAction func touchDirections(sender: AnyObject) {
 
-        var point = building!.objectForKey("location") as? PFGeoPoint
+        let point = building!.objectForKey("location") as? PFGeoPoint
         if point != nil {
             let destination = CLLocationCoordinate2D(latitude: point!.latitude, longitude: point!.longitude)
             var header = building!.objectForKey("name") as! String

@@ -11,6 +11,7 @@
 		185ED5041BCB14DC0047E95A /* AnnotationCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ED5031BCB14DC0047E95A /* AnnotationCluster.swift */; };
 		185ED5071BCB159C0047E95A /* QuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ED5061BCB159C0047E95A /* QuadTree.swift */; };
 		185ED5091BCB15FB0047E95A /* QuadTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ED5081BCB15FB0047E95A /* QuadTreeNode.swift */; };
+		1862371D1BCF9BCE00A27C4D /* ListingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862371C1BCF9BCD00A27C4D /* ListingsVC.swift */; settings = {ASSET_TAGS = (); }; };
 		187695281BCE257E009F433D /* ListingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187695271BCE257E009F433D /* ListingsTVC.swift */; settings = {ASSET_TAGS = (); }; };
 		1876952A1BCE2C77009F433D /* OverallNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187695291BCE2C77009F433D /* OverallNC.swift */; settings = {ASSET_TAGS = (); }; };
 		1876952C1BCE3358009F433D /* LocationObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876952B1BCE3358009F433D /* LocationObj.swift */; settings = {ASSET_TAGS = (); }; };
@@ -49,6 +50,7 @@
 		185ED5031BCB14DC0047E95A /* AnnotationCluster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationCluster.swift; sourceTree = "<group>"; };
 		185ED5061BCB159C0047E95A /* QuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadTree.swift; sourceTree = "<group>"; };
 		185ED5081BCB15FB0047E95A /* QuadTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadTreeNode.swift; sourceTree = "<group>"; };
+		1862371C1BCF9BCD00A27C4D /* ListingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingsVC.swift; sourceTree = "<group>"; };
 		187695271BCE257E009F433D /* ListingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingsTVC.swift; sourceTree = "<group>"; };
 		187695291BCE2C77009F433D /* OverallNC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverallNC.swift; sourceTree = "<group>"; };
 		1876952B1BCE3358009F433D /* LocationObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationObj.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				18C3FA081BCC4F27008FEAD8 /* MenuVC.swift */,
 				187695271BCE257E009F433D /* ListingsTVC.swift */,
 				187695301BCEF8C8009F433D /* OneLocationMapVC.swift */,
+				1862371C1BCF9BCD00A27C4D /* ListingsVC.swift */,
 				1888C6291BB552C3001F60DD /* Images.xcassets */,
 				1888C6261BB552C3001F60DD /* Main.storyboard */,
 				1888C62B1BB552C3001F60DD /* LaunchScreen.xib */,
@@ -368,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				187695311BCEF8C8009F433D /* OneLocationMapVC.swift in Sources */,
+				1862371D1BCF9BCE00A27C4D /* ListingsVC.swift in Sources */,
 				1876952A1BCE2C77009F433D /* OverallNC.swift in Sources */,
 				1876952E1BCEEE49009F433D /* Extensions.swift in Sources */,
 				185ED5071BCB159C0047E95A /* QuadTree.swift in Sources */,

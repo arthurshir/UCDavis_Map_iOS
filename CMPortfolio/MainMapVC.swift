@@ -102,7 +102,7 @@ class MainMapVC: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, UISe
     }
     
     func setVisibleOnMap(withMove: Bool) {
-        //mapView.clear()
+        mapView.clear()
         
         /*
         var m = mapView.ma

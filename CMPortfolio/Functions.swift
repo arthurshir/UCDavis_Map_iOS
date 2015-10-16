@@ -67,7 +67,32 @@ class Functions: NSObject {
     }
     
     // Retrieve Arrays from Saved JSON Data
-    class func returnArray() -> [AnyObject] {
+    class func returnArray(category: Int) -> [AnyObject] {
+        
+        // Return Array for Favorites
+        if (category == 5) {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            var ret = [AnyObject]()
+            let request = NSFetchRequest(entityName: "Buildings")
+            let buil = try? managedContext!.executeFetchRequest(request)
+            if ( buil != nil) {
+                for b in buil! {
+                    let b = b as! Buildings
+                    let locObj = LocationObj()
+                    locObj.lng = Double(b.lng)
+                    locObj.lat = Double(b.lat)
+                    locObj.name = b.name
+                    locObj.link = b.link
+                    ret.append(locObj)
+                }
+                return ret
+            } else {
+                return [AnyObject]()
+            }
+        }
+        
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         let data = defaults.objectForKey("BuildingsData") as? NSData
         if data == nil { return [AnyObject]() }
@@ -76,7 +101,7 @@ class Functions: NSObject {
         
         var ret = [AnyObject]()
         
-        let dic = arr.objectAtIndex(arr.count-1) as! NSDictionary
+        let dic = arr.objectAtIndex(arr.count - 1 - category) as! NSDictionary
         let buildings = dic.objectForKey("locations") as! [NSDictionary]
         for b in buildings {
             //print(b)
@@ -123,6 +148,27 @@ class Functions: NSObject {
         */
     }
     
+    class func returnCategoryName(catIndex: Int) -> String {
+        
+        // Return Name for Favorites
+        if (catIndex == 5) {
+            return "Favorites"
+        }
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let data = defaults.objectForKey("BuildingsData") as? NSData
+        if data == nil { return "" }
+        
+        let arr = (try! NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers )) as! NSMutableArray
+        
+        var ret = [AnyObject]()
+        
+        let dic = arr.objectAtIndex(arr.count - 1 - catIndex) as! NSDictionary
+        let name = dic.objectForKey("name") as! String
+        return name
+        
+    }
+    
     
     class func saveBuilding(lat: NSNumber, lng: NSNumber, name: String, link: String) {
         //1
@@ -167,9 +213,10 @@ class Functions: NSObject {
         
     }*/
 
+    /*
     class func makeFrame(x: Int, y: Int, width: Int, height: Int) -> CGRect {
         return CGRectMake( CGFloat(x), CGFloat(y), CGFloat(width), CGFloat(height) )
-    }
+    }*/
     
     class func themeColor() -> UIColor {
         return colorWithHexString("1E466B")

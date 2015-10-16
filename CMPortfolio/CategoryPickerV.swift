@@ -33,7 +33,7 @@ class CategoryPickerV: UIView {
         
         cpv.setupButtons()
         
-        cpv.pickedView.frame = Functions.makeFrame(0, y: 0, width: cpv.width, height: cpv.pickedHeight)
+        //cpv.pickedView.frame = Functions.makeFrame(0, y: 0, width: cpv.width, height: cpv.pickedHeight)
         cpv.pickedView.center = CGPointMake(cpv.center.x, cpv.buttons[0].center.y )
         cpv.pickedView.backgroundColor = UIColor.grayColor()
         cpv.insertSubview(cpv.pickedView, atIndex: 0)
@@ -44,7 +44,7 @@ class CategoryPickerV: UIView {
     
     func setupButtons() {
         for (var i = 0; i < categories.count; i++) {
-            let b = UIButton(frame: Functions.makeFrame( (width - buttonWidth)/2, y: 10 +  i*heightM, width: buttonWidth, height: buttonHeight) )
+            let b = UIButton()//frame: Functions.makeFrame( (width - buttonWidth)/2, y: 10 +  i*heightM, width: buttonWidth, height: buttonHeight) )
             b.setTitle(categories[i], forState: UIControlState.Normal)
             b.titleLabel?.font = UIFont(name: "Avenir-Black", size: 15)
             b.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
