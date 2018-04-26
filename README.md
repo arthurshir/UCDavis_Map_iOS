@@ -11,8 +11,9 @@ Interactive map of UC Davis that includes real-time search and navigation.
 - **Custom Pin**: var markerImage = Functions.imageWithView( markerViewWithText(text) )
 ![alt tag](https://github.com/fantaandcrackers/CM_Portfolio/blob/master/Illustrations/MakeMarker.png)
 
-![Demo](http://giant.gfycat.com/LateGranularFossa.gif)<br />
-![Demo](http://giant.gfycat.com/UnevenHollowFantail.gif)
+
+![Demo](https://github.com/arthurshir/UCDavis_Map_iOS/blob/master/ReadmeResources/full_demo.gif)<br />
+![Demo](https://github.com/arthurshir/UCDavis_Map_iOS/blob/master/ReadmeResources/scrolling_demo.gif)
 
 <!-- ## Code Example
 
